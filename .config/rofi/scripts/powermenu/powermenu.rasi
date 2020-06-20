@@ -1,0 +1,115 @@
+/*
+   _____ ______ _____
+  / ____|  ____|  __ \  || Programming enthausiast, privacy advocate, free software user.
+ | (___ | |__  | |__) | ||
+  \___ \|  __| |  _  /  || github.com/SFR-git
+  ____) | |    | | \ \  || ko-fi.com/supportsfr
+ |_____/|_|    |_|  \_\ || /u/sfrvtma
+*/
+
+ * {
+   accent:           #fafafa;
+   background:       #0e0e0e;
+   background-light: #1a1a1a;
+   foreground:       #fafafa;
+   on:               #66bb6a;
+   off:              #ef5350;
+ }
+
+
+
+/* ########### */
+
+* {
+  /* General */
+  text-font:                            "SF Mono Semibold 10";
+
+  option-6-listview-spacing:            0px;
+
+  menu-window-padding:                   8px 0px;
+  menu-inputbar-margin:                  0px 0px;
+  menu-prompt-padding:                   0px 0px 0px 0px;
+  menu-prompt-margin:                    0px 0px 0px 0px;
+  menu-element-border:                  0px;
+  menu-element-padding:                  4px 0px 4px 8px;
+}
+
+/* ########### */
+
+#window {
+  width: 10%;
+  height: 108;
+  y-offset: -931;
+  x-offset: -1712;
+  border-radius: 10;
+}
+
+/* ########### */
+
+* {
+  background-color: @background;
+  text-color: @foreground;
+  font: @text-font;
+}
+
+#horibox {
+  children: [ listview ];
+}
+#listview {
+  layout: vertical;
+}
+#element {
+  padding: @accent;
+  background-color: @background;
+}
+#element.selected {
+  background-color: @background-light;
+  text-color: @option-element-padding;
+}
+
+/* ########### */
+
+* {
+  font: @text-font;
+}
+#window {
+  padding: @menu-window-padding;
+  children: [ inputbar, horibox ];
+}
+#inputbar {
+  children: [ textbox-prompt-colon, prompt ];
+  margin: @menu-inputbar-margin;
+  enabled: false;
+}
+
+#listview {
+  spacing: @option-6-listview-spacing;
+  lines: 4;
+}
+#element {
+  font: @text-font;
+  border: @menu-element-border;
+  padding: @menu-element-padding;
+  border-color: @background-light;
+}
+#element.selected {
+  border-color: @accent;
+}
+element.active,
+element.selected.urgent {
+  background-color: @on;
+  text-color: @background;
+  border-color: @on;
+}
+element.selected.urgent {
+  border-color: @accent;
+}
+element.urgent,
+element.selected.active {
+  background-color: @off;
+  text-color: @background;
+  border-color: @off;
+}
+element.selected.active {
+  border-color: @accent;
+}
