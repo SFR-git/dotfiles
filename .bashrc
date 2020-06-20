@@ -64,6 +64,7 @@ alias config='/usr/bin/git --git-dir=/home/sol/.dots/ --work-tree=/home/sol'
 export HISTCONTROL=ignoreboth
 export EDITOR=nvim
 export VISUAL=nvim
+export USERNAME=`whoami`
 
 # Set PATH so it includes user's private bin directories
 PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
