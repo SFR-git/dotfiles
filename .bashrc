@@ -43,7 +43,6 @@ ALERT="${BWhite}${On_Red}" # Bold White on red background
 # Useful aliases
 alias c='clear'
 alias ..='cd ..'
-alias sudo='doas --'
 alias ls='exa -a --git --long -G -s name --color=auto'
 alias mkdir='mkdir -pv'
 alias free='free -mt'
