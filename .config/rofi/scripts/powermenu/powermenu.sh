@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 rofi_command="rofi -theme scripts/powermenu/powermenu.rasi"
+USERNAME=`whoami`
 
 # Options
 shutdown="Shutdown"
@@ -25,6 +26,6 @@ case $chosen in
         systemctl suspend
         ;;
     $logout)
-        logout
+        pkill -u $USERNAME
         ;;
 esac
