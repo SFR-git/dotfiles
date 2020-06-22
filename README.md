@@ -13,4 +13,6 @@ This is a collection of my configuration files. Feel free to use any of them.
 * xmonad-contrib
 * xkb-switch
 * xdotool
+* udisks2
+* udiskie
 * bash
