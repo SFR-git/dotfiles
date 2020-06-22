@@ -1,6 +1,9 @@
-#
-# ~/.bashrc
-#
+#   _____ ______ _____
+#  / ____|  ____|  __ \  || Programming enthausiast, privacy advocate, free software user.
+# | (___ | |__  | |__) | ||
+#  \___ \|  __| |  _  /  || github.com/SFR-git
+#  ____) | |    | | \ \  || ko-fi.com/supportsfr
+# |_____/|_|    |_|  \_\ || /u/sfrvtma
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -63,7 +66,6 @@ alias config='/usr/bin/git --git-dir=/home/sol/.dots/ --work-tree=/home/sol'
 export HISTCONTROL=ignoreboth
 export EDITOR=nvim
 export VISUAL=nvim
-export USERNAME=`whoami`
 
 # Set PATH so it includes user's private bin directories
 PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
