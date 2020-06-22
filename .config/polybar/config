@@ -51,7 +51,7 @@ offset-y = 8
 offset-x = 8
 
 radius = 10.0
-border-bottom-size = 8
+border-bottom-size = 0
 
 ;----------;
 ; LOCATION ;
