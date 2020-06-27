@@ -83,8 +83,8 @@ padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = rofi-powermenu now
-modules-center = xwindow
+modules-left = rofi-powermenu xmonad
+modules-center = now
 modules-right = xkeyboard volume network
 
 enable-ipc = true
@@ -132,11 +132,14 @@ format = <label-layout>
 
 label-layout = %name%
 
-[module/xwindow]
-type = internal/xwindow
-
 [module/rofi-powermenu]
 type = custom/text
 
 content = 襤
 click-left = ~/.config/rofi/scripts/powermenu/powermenu.sh
+
+[module/xmonad]
+type = custom/script
+exec = xmonad-log
+
+tail = true
