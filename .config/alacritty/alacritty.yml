@@ -16,7 +16,7 @@ window:
   position:
     x: 0
     y: 0
-
+  
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
@@ -49,14 +49,9 @@ window:
   #   - SimpleFullscreen
   startup_mode: Maximized
 
-
-title: Alacritty
-
-class:
-  instance: Alacritty
-  general: Alacritty
-
 gtk_theme_variant: dark
+
+dynamic_title: false
 
 scrolling:
   history: 10000
