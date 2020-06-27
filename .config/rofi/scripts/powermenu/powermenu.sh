@@ -21,8 +21,6 @@ case $chosen in
         systemctl reboot
         ;;
     $suspend)
-        mpc -q pause
-        amixer set Master mute
         systemctl suspend
         ;;
     $logout)
