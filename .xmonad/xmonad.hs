@@ -17,25 +17,16 @@ import System.IO (hPutStrLn)
 import System.Exit (exitSuccess)
 import XMonad
 import XMonad.Actions.CopyWindow (kill1, killAllOtherCopies)
-import XMonad.Actions.CycleWS (moveTo, shiftTo, WSType(..), nextScreen, prevScreen)
 import XMonad.Actions.MouseResize
-import XMonad.Actions.Promote
-import XMonad.Actions.RotSlaves (rotSlavesDown, rotAllDown)
-import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.WithAll (sinkAll, killAll)
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops 
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.GridVariants (Grid(Grid))
-import XMonad.Layout.LayoutModifier
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
 import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
-import XMonad.Layout.Magnifier
 import XMonad.Layout.MultiToggle (mkToggle, single, EOT(EOT), (??))
-import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR, NOBORDERS))
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed (renamed, Rename(Replace))
@@ -43,10 +34,8 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.Spacing
 import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
-import XMonad.ManageHook
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeysP)
-import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
 
 main :: IO ()
@@ -103,7 +92,7 @@ main = do
 
     -- Polybar
         , logHook = dynamicLogWithPP (def
-            { ppOutput = dbusOutput dbus
+            { ppOutput = myDBusOutput dbus
             , ppCurrent = wrap ("%{F" ++ "#fafafa" ++ "} ") " %{F-}"
             , ppVisible = wrap ("%{F" ++ "#fafafa" ++ "} ") " %{F-}"
             , ppHidden = wrap ("%{F" ++ "#545454" ++ "} ") " %{F-}"
@@ -139,7 +128,7 @@ main = do
             ] 
 
 -- (NOT DONE)
-dbusOutput dbus str = do
-    D.emit dbus ((D.signal (D.objectPath_ "/org/xmonad/Log") (D.interfaceName_ "org.xmonad.Log") (D.memberName_ "Update")) {
+myDBusOutput myDBus str =
+    D.emit myDBus ((D.signal (D.objectPath_ "/org/xmonad/Log") (D.interfaceName_ "org.xmonad.Log") (D.memberName_ "Update")) {
             D.signalBody = [D.toVariant $ UTF8.decodeString str]
         })
