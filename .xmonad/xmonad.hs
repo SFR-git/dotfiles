@@ -45,7 +45,6 @@ main = do
         [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
 
     xmonad $ ewmh $ docks $ def
-
         { modMask            = mod4Mask
         , terminal           = "alacritty"
 
@@ -92,7 +91,10 @@ main = do
 
     -- Polybar
         , logHook = dynamicLogWithPP (def
-            { ppOutput = myDBusOutput dbus
+            { ppOutput = \str -> 
+                D.emit dbus ((D.signal (D.objectPath_ "/org/xmonad/Log") (D.interfaceName_ "org.xmonad.Log") (D.memberName_ "Update")) {
+                        D.signalBody = [D.toVariant $ UTF8.decodeString str]
+                    })
             , ppCurrent = wrap ("%{F" ++ "#fafafa" ++ "} ") " %{F-}"
             , ppVisible = wrap ("%{F" ++ "#fafafa" ++ "} ") " %{F-}"
             , ppHidden = wrap ("%{F" ++ "#545454" ++ "} ") " %{F-}"
@@ -126,9 +128,3 @@ main = do
             , ("S-<F14>", spawn "sleep 0.2; scrot -s ~/Pictures/Screenshots/%b%d-%H%M%S.png") -- Take screenshot of area
             , ("<F15>", spawn "xkb-switch -n && xmodmap ~/.Xmodmap") -- Cycle keyboard layouts
             ] 
-
--- (NOT DONE)
-myDBusOutput myDBus str =
-    D.emit myDBus ((D.signal (D.objectPath_ "/org/xmonad/Log") (D.interfaceName_ "org.xmonad.Log") (D.memberName_ "Update")) {
-            D.signalBody = [D.toVariant $ UTF8.decodeString str]
-        })
