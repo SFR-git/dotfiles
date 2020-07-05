@@ -12,8 +12,9 @@ This is a collection of my configuration files. Feel free to use any of them.
 * xmonad
 * xmonad-contrib
 * xkb-switch
-* xdotool
 * udisks2
 * udiskie
 * bash
 * scrot
+* xmodmap
+* feh
