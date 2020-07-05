@@ -62,7 +62,6 @@ alias vim='nvim'
 alias vifm='~/.config/vifm/scripts/vifmrun'
 alias config='/usr/bin/git --git-dir=/home/sol/.dots/ --work-tree=/home/sol'
 alias scrot='scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png'
-alias sduo='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
 # Exports
 export HISTCONTROL=ignoreboth
@@ -75,3 +74,6 @@ PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
 # Set prompt
 PS1="${Yellow}[\u@\h]${NC} ${Blue}\w${NC} \\$ "
 PS2="${Yellow}>>>${NC} "
+
+# Rick roll roulette
+[ $[$RANDOM % 420] = 0 ] && ./.rickrollrc.sh
