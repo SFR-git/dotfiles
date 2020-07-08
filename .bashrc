@@ -59,8 +59,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -i'
 alias vim='nvim'
-alias vifm='~/.config/vifm/scripts/vifmrun'
-alias config='/usr/bin/git --git-dir=/home/sol/.dots/ --work-tree=/home/sol'
+alias dotfiles='/usr/bin/git --git-dir=/home/sol/.dots/ --work-tree=/home/sol'
 alias scrot='scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png'
 
 # Exports
