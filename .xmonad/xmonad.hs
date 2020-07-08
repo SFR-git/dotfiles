@@ -50,6 +50,7 @@ main = do
 
     -- Autostart
         , startupHook = do
+            spawnOnce "xsetroot -cursor_name left_ptr &"                    -- Replace X cursor
             spawnOnce "feh --randomize --bg-fill /usr/share/wallpapers/* &" -- Set random wallpaper
             spawnOnce "picom &"                                             -- Compositing
             spawnOnce "udiskie -Nt &"                                       -- Automount disks
