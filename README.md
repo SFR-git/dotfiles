@@ -6,7 +6,7 @@ This is a collection of my configuration files. Feel free to use any of them.
 * rofi
 * polybar
 * neovim
-* vifm
+* ranger
 * dunst
 * alacritty
 * xmonad
