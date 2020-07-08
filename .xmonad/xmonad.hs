@@ -57,6 +57,7 @@ main = do
             spawnOnce "polybar bar1 &"                                      -- Polybar
             spawnOnce "setxkbmap gb,il &"                                   -- Layout switcher
             spawnOnce "sleep 1; xmodmap ~/.Xmodmap &"                       -- Key remaps & inverse scrolling
+            spawnOnce "xset s off -dpms &"                                  -- Disable screensaver
             setWMName "LG3D"                                                -- Java compatibility iirc
 
     -- Layouts
