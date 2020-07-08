@@ -1,10 +1,13 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'https://github.com/junegunn/fzf.vim'
-Plug 'https://github.com/itchyny/lightline.vim'
-Plug 'https://github.com/tpope/vim-surround'
-Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'valloric/youcompleteme'
+Plug 'tpope/vim-fugitive'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim' 
+
 
 call plug#end()
 
