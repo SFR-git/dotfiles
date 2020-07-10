@@ -126,7 +126,7 @@ main = do
             , ("M-C-j", sendMessage MirrorShrink)                           -- Shrink vertical window width
             , ("M-C-k", sendMessage MirrorExpand)                           -- Expand vertical window width
             , ("M-<Tab>", sendMessage NextLayout)                           -- Switch to next layout
-            , ("<F13>", spawn "~/.config/rofi/launcher/launcher.sh")        -- Application Launcher
+            , ("M-S-<Return>", spawn "~/.config/rofi/launcher/launcher.sh")        -- Application Launcher
             , ("<F14>", spawn "scrot ~/Pictures/Screenshots/%b%d-%H%M%S.png") -- Take a fullscreen screenshot
             , ("S-<F14>", spawn "sleep 0.2; scrot -s ~/Pictures/Screenshots/%b%d-%H%M%S.png") -- Take screenshot of area
             , ("<F15>", spawn "xkb-switch -n && xmodmap ~/.Xmodmap")        -- Cycle keyboard layouts
