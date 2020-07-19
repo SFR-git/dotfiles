@@ -40,7 +40,7 @@ import XMonad.Util.SpawnOnce
 
 main :: IO ()
 main = do
-    dbus <- D.connectSession
+    dbus <- D.connectSession                                                -- DBus configuration
     D.requestName dbus (D.busName_ "org.xmonad.Log")
         [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
 
@@ -107,8 +107,7 @@ main = do
 
     -- Keybinds
         } `additionalKeysP` 
-            [ ("M-C-r", spawn "xmonad --recompile")                         -- Recompiles xmonad
-            , ("M-S-r", spawn "xmonad --restart")                           -- Restarts xmonad
+            [ ("M-S-r", spawn "xmonad --restart")                           -- Restarts xmonad
             , ("M-S-q", io exitSuccess)                                     -- Quits xmonad
             , ("M-<Return>", spawn "alacritty")                             -- Open Alacritty
             , ("M-S-c", kill1)                                              -- Kill the currently focused client
