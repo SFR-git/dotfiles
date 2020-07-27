@@ -7,7 +7,10 @@ Plug 'valloric/youcompleteme'
 Plug 'tpope/vim-fugitive'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim' 
-
+Plug 'jiangmiao/auto-pairs'
+Plug 'tmhedberg/simpylfold'
+Plug 'konfekt/fastfold'
+Plug 'yggdroot/indentline'
 
 call plug#end()
 
@@ -24,4 +27,6 @@ set ignorecase
 set smartcase
 set mouse=a
 set shiftwidth=4
-
+set tabstop=2
+set softtabstop=2
+set completeopt-=preview
