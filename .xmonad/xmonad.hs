@@ -6,17 +6,11 @@
 -- |_____/|_|    |_|  \_\ || /u/sfrvtma
 
 import qualified Codec.Binary.UTF8.String as UTF8
-import Data.Char (isSpace)
-import Data.List
-import Data.Monoid
-import Data.Maybe (isJust)
-import qualified Data.Map as M
 import qualified DBus as D
 import qualified DBus.Client as D
-import System.IO (hPutStrLn)
 import System.Exit (exitSuccess)
 import XMonad
-import XMonad.Actions.CopyWindow (kill1, killAllOtherCopies)
+import XMonad.Actions.CopyWindow (kill1)
 import XMonad.Actions.MouseResize
 import XMonad.Actions.WithAll (sinkAll, killAll)
 import XMonad.Hooks.DynamicLog
@@ -24,16 +18,16 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.GridVariants (Grid(Grid))
-import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
-import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
-import XMonad.Layout.MultiToggle (mkToggle, single, EOT(EOT), (??))
-import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR, NOBORDERS))
+import XMonad.Layout.LimitWindows (limitWindows)
+import qualified XMonad.Layout.ToggleLayouts as T (ToggleLayout(Toggle))
+import XMonad.Layout.MultiToggle (mkToggle, single)
+import XMonad.Layout.MultiToggle.Instances (StdTransformers(MIRROR))
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed (renamed, Rename(Replace))
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.Spacing
-import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
+import XMonad.Layout.WindowArranger (windowArrange)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.SpawnOnce
@@ -41,7 +35,7 @@ import XMonad.Util.SpawnOnce
 main :: IO ()
 main = do
     dbus <- D.connectSession                                                -- DBus configuration
-    D.requestName dbus (D.busName_ "org.xmonad.Log")
+    _ <- D.requestName dbus (D.busName_ "org.xmonad.Log")
         [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
 
     xmonad $ ewmh $ docks $ def
@@ -125,8 +119,8 @@ main = do
             , ("M-C-j", sendMessage MirrorShrink)                           -- Shrink vertical window width
             , ("M-C-k", sendMessage MirrorExpand)                           -- Expand vertical window width
             , ("M-<Tab>", sendMessage NextLayout)                           -- Switch to next layout
-            , ("M-S-<Return>", spawn "~/.config/rofi/launcher/launcher.sh")        -- Application Launcher
-            , ("<F14>", spawn "scrot ~/Pictures/Screenshots/%b%d-%H%M%S.png") -- Take a fullscreen screenshot
-            , ("S-<F14>", spawn "sleep 0.2; scrot -s ~/Pictures/Screenshots/%b%d-%H%M%S.png") -- Take screenshot of area
+            , ("M-S-<Return>", spawn "~/.config/rofi/launcher/launcher.sh") -- Application Launcher
+            , ("<F14>", spawn "scrot ~/Pictures/Screenshots/%y-%m-%d-%H%M%S.png") -- Take a fullscreen screenshot
+            , ("S-<F14>", spawn "sleep 0.2; scrot -s ~/Pictures/Screenshots/%y-%m-%d-%H%M%S.png") -- Take screenshot of area
             , ("<F15>", spawn "xkb-switch -n && xmodmap ~/.Xmodmap")        -- Cycle keyboard layouts
             ] 
