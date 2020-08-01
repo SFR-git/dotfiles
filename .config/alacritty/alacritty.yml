@@ -51,8 +51,6 @@ window:
 
 gtk_theme_variant: dark
 
-dynamic_title: false
-
 scrolling:
   history: 10000
   multiplier: 3
