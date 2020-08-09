@@ -81,11 +81,11 @@ border-color = 0
 fixed-center = true
 padding-left = 2
 padding-right = 2
-module-margin = 1.5
+module-margin = 1
 
-modules-left = rofi-powermenu xmonad
-modules-center = now
-modules-right = xkeyboard volume network
+modules-left = xmonad
+modules-center =
+modules-right = wired-network wireless-network xkeyboard volume battery date-time
 
 enable-ipc = true
 
@@ -94,31 +94,37 @@ enable-ipc = true
 ;---------;
 
 
-[module/now]
+[module/date-time]
 type = internal/date
 interval = 1.0
-date = %H:%M | %d %b %Y
+date =  %Y-%m-%d  %H:%M
 
 [module/volume]
 type = internal/alsa
-
-format-volume = <ramp-volume>
-format-muted = 
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-
-
-[module/network]
-type = internal/network
-
-interface = enp4s0
-
 interval = 3
 
-label-connected = 
-label-disconnected = 
+format-volume =   <label-volume>
+label-volume = %percentage:2%%
+
+[module/wired-network]
+type = internal/network
+interface = enp4s0
+
+label-connected =  Wired  %downspeed%  %upspeed%
+label-disconnected =  Disconnected
+
+[module/wireless-network]
+type = internal/network
+interface = wlan1
+
+label-connected =  %essid%  %downspeed%  %upspeed%
+label-disconnected =  Disconnected
+
+[module/battery]
+type = internal/battery
+
+label-discharging =  %percentage%%
+label-charging =  %percentage%%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -130,13 +136,7 @@ blacklist-2 = caps lock
 format = <label-layout>
 ; format-spacing = 0
 
-label-layout = %name%
-
-[module/rofi-powermenu]
-type = custom/text
-
-content = 襤
-click-left = ~/.config/rofi/scripts/powermenu/powermenu.sh
+label-layout =  %layout%
 
 [module/xmonad]
 type = custom/script
