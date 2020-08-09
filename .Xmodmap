@@ -1,6 +1,3 @@
-! Natural scrolling
-pointer = 1 2 3 5 4 7 6 8 9 10 11 12
-
 ! Set 9 side-buttons
 keycode 107 = F13
 keycode 78 = F14
