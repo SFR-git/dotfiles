@@ -110,8 +110,8 @@ label-volume = %percentage:2%%
 type = internal/network
 interface = enp4s0
 
-label-connected =  Wired  %downspeed%  %upspeed%
-label-disconnected =  Disconnected
+label-connected =  Wired  %downspeed%  %upspeed%
+label-disconnected =  Disconnected
 
 [module/wireless-network]
 type = internal/network
