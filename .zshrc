@@ -3,14 +3,14 @@ ZSH_THEME="sfr"
 CASE_SENSITIVE="false"
 HYPHEN_INSENSITIVE="true"
 
-plugins=(git zsh-autosuggestions colored-man-pages command-not-found cp compleat)
+plugins=(zsh-autosuggestions colored-man-pages command-not-found cp compleat)
 
 # Exports
 export LANG=en_GB.UTF-8
 export HISTCONTROL=ignoreboth
 export EDITOR=nvim
 export VISUAL=nvim
-export ZSH="/home/sol/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#545454"
 
@@ -32,8 +32,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -i'
 alias vim='nvim'
-alias dotfiles='/usr/bin/git --git-dir=/home/sol/.dots/ --work-tree=/home/sol'
-alias scrot='scrot ~/Pictures/Screenshots/%b%d::%H%M%S.png'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME/'
 
 # Rick roll roulette
 [ $[$RANDOM % 420] = 0 ] && ./.rickrollrc.sh
