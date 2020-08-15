@@ -25,6 +25,7 @@ set expandtab
 set hidden
 set ignorecase
 set smartcase
+set noshowmode
 set mouse=a
 set shiftwidth=4
 set tabstop=2

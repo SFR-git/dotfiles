@@ -3,7 +3,7 @@ ZSH_THEME="sfr"
 CASE_SENSITIVE="false"
 HYPHEN_INSENSITIVE="true"
 
-plugins=(zsh-autosuggestions colored-man-pages command-not-found cp compleat)
+plugins=(zsh-autosuggestions colored-man-pages command-not-found cp compleat extract)
 
 # Exports
 export LANG=en_GB.UTF-8
