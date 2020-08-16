@@ -6,15 +6,14 @@ This is a collection of my configuration files. Feel free to use any of them.
 * rofi
 * polybar
 * neovim
+* vim-plug
 * ranger
 * dunst
 * alacritty
 * xmonad
 * xmonad-contrib
-* xkb-switch
 * udisks2
 * udiskie
-* bash
+* zsh
 * scrot
-* xmodmap
 * feh
