@@ -105,6 +105,7 @@ interval = 3
 
 format-volume =   <label-volume>
 label-volume = %percentage:2%%
+format-muted =   0%
 
 [module/wired-network]
 type = internal/network
