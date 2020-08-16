@@ -49,8 +49,7 @@ main = do
             spawnOnce "picom &"                                             -- Compositing
             spawnOnce "udiskie -Nt &"                                       -- Automount disks
             spawnOnce "polybar bar1 &"                                      -- Polybar
-            spawnOnce "setxkbmap gb,il &"                                   -- Layout switcher
-            spawnOnce "sleep 1; xmodmap ~/.Xmodmap &"                       -- Key remaps & inverse scrolling
+            spawnOnce "setxkbmap gb,il -option grp:caps_toggle &"           -- Layout switcher
             spawnOnce "xset s off -dpms &"                                  -- Disable screensaver
             setWMName "LG3D"                                                -- Java compatibility iirc
 
@@ -122,5 +121,4 @@ main = do
             , ("M-S-<Return>", spawn "~/.config/rofi/launcher.sh") -- Application Launcher
             , ("<F14>", spawn "scrot ~/Pictures/Screenshots/%y-%m-%d-%H%M%S.png") -- Take a fullscreen screenshot
             , ("S-<F14>", spawn "sleep 0.2; scrot -s ~/Pictures/Screenshots/%y-%m-%d-%H%M%S.png") -- Take screenshot of area
-            , ("<F15>", spawn "xkb-switch -n && xmodmap ~/.Xmodmap")        -- Cycle keyboard layouts
             ] 
