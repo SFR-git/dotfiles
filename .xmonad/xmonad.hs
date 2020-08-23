@@ -33,7 +33,7 @@ import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.SpawnOnce
 
 main :: IO ()
-main = do
+main = do 
     dbus <- D.connectSession                                                -- DBus configuration
     _ <- D.requestName dbus (D.busName_ "org.xmonad.Log")
         [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
@@ -59,7 +59,7 @@ main = do
                     (( renamed [Replace "Master & Stacked"]                 -- Master & Stacked
                          $ limitWindows 12
                          $ spacingRaw False (Border 4 4 4 4) True (Border 4 4 4 4) True
-                         $ ResizableTall 1 (3/100) (1/2) []
+                         $ ResizableTall 1 (3/100) (4/7) []
               ) ||| (( renamed [Replace "Monocle"]                          -- Fullscreen
                          $ spacingRaw False (Border 4 4 4 4) True (Border 4 4 4 4) True
                          $ limitWindows 20 Full
@@ -118,7 +118,7 @@ main = do
             , ("M-C-j", sendMessage MirrorShrink)                           -- Shrink vertical window width
             , ("M-C-k", sendMessage MirrorExpand)                           -- Expand vertical window width
             , ("M-<Tab>", sendMessage NextLayout)                           -- Switch to next layout
-            , ("M-S-<Return>", spawn "~/.config/rofi/launcher.sh") -- Application Launcher
+            , ("M-p", spawn "~/.config/rofi/launcher.sh")                   -- Application Launcher
             , ("<Print>", spawn "scrot ~/Pictures/Screenshots/%y-%m-%d-%H%M%S.png") -- Take a fullscreen screenshot
             , ("S-<Print>", spawn "sleep 0.2; scrot -s ~/Pictures/Screenshots/%y-%m-%d-%H%M%S.png") -- Take screenshot of area
             ] 
