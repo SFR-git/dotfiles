@@ -49,7 +49,7 @@ main = do
             spawnOnce "picom &"                                             -- Compositing
             spawnOnce "udiskie -Nt &"                                       -- Automount disks
             spawnOnce "polybar bar1 &"                                      -- Polybar
-            spawnOnce "setxkbmap gb,il -option grp:caps_toggle &"           -- Layout switcher
+            spawnOnce "setxkbmap us,il -option grp:caps_toggle &"           -- Layout switcher
             spawnOnce "xset s off -dpms &"                                  -- Disable screensaver
             setWMName "LG3D"                                                -- Java compatibility iirc
 
@@ -121,4 +121,10 @@ main = do
             , ("M-p", spawn "~/.config/rofi/launcher.sh")                   -- Application Launcher
             , ("<Print>", spawn "scrot ~/Pictures/Screenshots/%y-%m-%d-%H%M%S.png") -- Take a fullscreen screenshot
             , ("S-<Print>", spawn "sleep 0.2; scrot -s ~/Pictures/Screenshots/%y-%m-%d-%H%M%S.png") -- Take screenshot of area
+            , ("<XF86AudioMute>", spawn "amixer sset Master toggle")        -- Mute audio
+            , ("<XF86AudioLowerVolume>", spawn "amixer sset Master 5%- unmute") -- Lower volume
+            , ("<XF86AudioRaiseVolume>", spawn "amixer sset Master 5%+ unmute") -- Raise volume
+            , ("<XF86AudioMicMute>", spawn "amixer sset Capture toggle")    -- Mute mic
+            , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 5")        -- Decrease brightness
+            , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 5")          -- Increase brightness
             ] 
