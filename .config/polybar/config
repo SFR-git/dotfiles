@@ -116,7 +116,7 @@ label-disconnected =  Disconnected
 
 [module/wireless-network]
 type = internal/network
-interface = wlan1
+interface = wlp0s20f3
 
 label-connected =  %essid%  %downspeed%  %upspeed%
 label-disconnected =  Disconnected
