@@ -17,3 +17,5 @@ This is a collection of my configuration files. Feel free to use any of them.
 * zsh
 * scrot
 * feh
+* ueberzug
+* exa
