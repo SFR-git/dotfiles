@@ -39,7 +39,7 @@ window {
     text-color:                     @foreground;
     border-radius:                  0px;
     height:                         24px;
-    width:                          1904;
+    width:                          98.823%;
     location:                       north;
     anchor:                         north;
     x-offset:                       0;
@@ -117,7 +117,7 @@ element {
     text-color:                     @foreground;
     orientation:                    horizontal;
     border-radius:                  0px;
-    padding:                        4px 8px 5px 8px;
+    padding:                        3px 8px 5px 8px;
 }
 
 element-icon {
