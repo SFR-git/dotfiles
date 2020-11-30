@@ -16,11 +16,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'tmhedberg/simpylfold'
 Plug 'konfekt/fastfold'
 Plug 'yggdroot/indentline'
 Plug 'scrooloose/nerdtree' 
 Plug 'gabrielelana/vim-markdown' 
+Plug 'aperezdc/vim-template'
 
 call plug#end()
 
@@ -28,6 +28,21 @@ call plug#end()
 nnoremap tl :tabnext<CR>
 nnoremap th :tabprev<CR>
 nnoremap tn :tabnew<CR>
+nnoremap tc :tabclose<CR>
+
+" Switch Splits
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 " Set Statements
 set number
@@ -60,10 +75,23 @@ endfunction "" }}}
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType java JCEnable
 
-" NERDTREE
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" NERDTree and Terminal
 map tt :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+tnoremap <Esc> <C-\><C-n>
+autocmd TabNew,VimEnter *
+    \ NERDTree |
+    \ execute "wincmd l" |
+    \ split |
+    \ execute "wincmd j" |
+    \ execute "term" |
+    \ execute "resize 10" |
+    \ execute "set nonumber" |
+    \ execute "wincmd k"
+
+" Autoclose if only NERDTree and terminal remain
+autocmd bufenter * if (winnr("$") == 2 && (exists("b:NERDTree") || &buftype ==# 'terminal')) | q | endif
+autocmd bufenter * if (winnr("$") == 1 && (exists("b:NERDTree") || &buftype ==# 'terminal')) | q | endif
 
 " Markdown
 let g:markdown_enable_spell_checking = 0
