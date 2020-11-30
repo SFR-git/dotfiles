@@ -117,7 +117,7 @@ element {
     text-color:                     @foreground;
     orientation:                    horizontal;
     border-radius:                  0px;
-    padding:                        3px 8px 5px 8px;
+    padding:                        3px 8px 3px 8px;
 }
 
 element-icon {
