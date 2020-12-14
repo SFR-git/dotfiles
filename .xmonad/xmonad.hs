@@ -81,6 +81,9 @@ main = do
         , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] 
         -- Might add window rules at some point
 
+    -- Fullscreen
+        , handleEventHook = docksEventHook <+> handleEventHook def <+> fullscreenEventHook
+
     -- Border
         , normalBorderColor  = "#1a1a1a" -- Trying to make this transparent
         , focusedBorderColor = "#fafafa"
