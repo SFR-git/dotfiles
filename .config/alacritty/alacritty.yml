@@ -65,11 +65,9 @@ font:
 
   italic:
     family: "SF Mono"
-    style: Italic
 
   bold_italic:
     family: "SF Mono"
-    style: Bold Italic
 
   size: 11.0
 
