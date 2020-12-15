@@ -1,28 +1,50 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
 
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'yggdroot/indentline'
+Plug 'preservim/nerdtree'
+Plug 'vim-syntastic/syntastic'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'jbgutierrez/vim-better-comments'
+Plug 'tpope/vim-commentary'
+Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 
-Plug 'junegunn/fzf.vim'
+"" Git
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
+Plug 'tveskag/nvim-blame-line'
+Plug 'itchyny/vim-gitbranch'
+
+"" Languages
+Plug 'gabrielelana/vim-markdown' 
 Plug 'starcraftman/vim-eclim'
 Plug 'artur-shaik/vim-javacomplete2'
-Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'rbgrouleff/bclose.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'konfekt/fastfold'
-Plug 'yggdroot/indentline'
-Plug 'scrooloose/nerdtree' 
-Plug 'gabrielelana/vim-markdown' 
-Plug 'aperezdc/vim-template'
+
+"" Colorschemes
+Plug 'tyrannicaltoucan/vim-quantum'
 
 call plug#end()
+
+" Set Statements
+set number
+set expandtab
+set hidden
+set ignorecase
+set smartcase
+set noshowmode
+set mouse=a
+set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set completeopt-=preview
+set updatetime=100
+set background=dark
+set termguicolors
 
 " Switch Tabs
 nnoremap tl :tabnext<CR>
@@ -44,19 +66,10 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-" Set Statements
-set number
-set expandtab
-set hidden
-set ignorecase
-set smartcase
-set noshowmode
-set mouse=a
-set shiftwidth=4
-set tabstop=2
-set softtabstop=2
-set completeopt-=preview
-
+" Colorscheme
+let g:quantum_black=1
+let g:quantum_italics=1
+colorscheme quantum
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -71,11 +84,69 @@ function! s:check_back_space() abort "" {{{
     return !col || getline('.')[col - 1]  =~ '\s'
 endfunction "" }}}
 
+" Syntastic
+let g:syntastic_mode_map = { "mode": "active" }
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
+let g:syntastic_javascript_checkers = ['eslint']
+autocmd BufWritePre,BufEnter * SyntasticCheck
+
+" Lightline
+let g:lightline = {
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'filename', 'gitbranch', 'readonly', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'gitbranch#name'
+    \ },
+    \ 'colorscheme': 'quantum',
+    \ }
+
+" Better Comments
+highlight ErrorBetterComments guifg=#dd7186
+highlight QuestionBetterComments guifg=#70ace5
+highlight TodoBetterComments guifg=#d7956e
+highlight HighlightBetterComments guifg=#a48add
+highlight StrikeoutBetterComments guifg=#6a6c6c
+
+" Markdown
+let g:markdown_enable_spell_checking = 0
+
+" Prettier
+let g:prettier#config#tab_width = '4'
+let g:prettier#autoformat = 0
+let g:prettier#config#trailing_comma = 'all'
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
 " Java completion
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType java JCEnable
 
-" NERDTree and Terminal
+" Blamer
+autocmd BufEnter * EnableBlameLine
+let g:blameLineGitFormat = '%an, %ar - %s'
+
+" NERDTree Git
+let g:NERDTreeGitStatusConcealBrackets = 1
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+    \ 'Modified'  :'~ ',
+    \ 'Staged'    :'✓ ',
+    \ 'Untracked' :'+ ',
+    \ 'Renamed'   :'= ',
+    \ 'Unmerged'  :'※ ',
+    \ 'Deleted'   :'- ',
+    \ 'Dirty'     :'✗ ',
+    \ 'Ignored'   :'☒ ',
+    \ 'Clean'     :'* ',
+    \ 'Unknown'   :'? ',
+    \ }
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+" Open NERDTree and terminal on start
 map tt :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 tnoremap <Esc> <C-\><C-n>
@@ -87,11 +158,11 @@ autocmd TabNew,VimEnter *
     \ execute "term" |
     \ execute "resize 10" |
     \ execute "set nonumber" |
-    \ execute "wincmd k"
+    \ execute "wincmd k" |
+    \ execute "set signcolumn=yes"
 
 " Autoclose if only NERDTree and terminal remain
-autocmd bufenter * if (winnr("$") == 2 && (exists("b:NERDTree") || &buftype ==# 'terminal')) | q | endif
-autocmd bufenter * if (winnr("$") == 1 && (exists("b:NERDTree") || &buftype ==# 'terminal')) | q | endif
+for i in [1, 2]
+    autocmd bufenter * if (winnr("$") <= 2 && (exists("b:NERDTree") || &buftype ==# 'terminal')) | q | endif
+endfor
 
-" Markdown
-let g:markdown_enable_spell_checking = 0
