@@ -88,22 +88,22 @@ colors:
 
   normal:
     black:   '#1A1A1A'
-    red:     '#EC5D5D'
-    green:   '#83EE40'
-    yellow:  '#FFE966'
-    blue:    '#66B6FF'
+    red:     '#DD7186'
+    green:   '#87BB7C'
+    yellow:  '#D5B875'
+    blue:    '#70ACE5'
     magenta: '#AB9DF2'
-    cyan:    '#78E8DA'
+    cyan:    '#69C5Ce'
     white:   '#FAFAFA'
 
   bright:
     black:   '#1A1A1A'
-    red:     '#EC5D5D'
-    green:   '#83EE40'
-    yellow:  '#FFE966'
-    blue:    '#66B6FF'
+    red:     '#DD7186'
+    green:   '#87BB7C'
+    yellow:  '#D5B875'
+    blue:    '#70ACE5'
     magenta: '#AB9DF2'
-    cyan:    '#78E8DA'
+    cyan:    '#69C5Ce'
     white:   '#FAFAFA'
 
 # Visual Bell
