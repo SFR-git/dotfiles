@@ -13,6 +13,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'jbgutierrez/vim-better-comments'
 Plug 'tpope/vim-commentary'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
+Plug 'ryanoasis/vim-devicons'
 
 "" Git
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -24,6 +25,10 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'gabrielelana/vim-markdown' 
 Plug 'starcraftman/vim-eclim'
 Plug 'artur-shaik/vim-javacomplete2'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'hdima/python-syntax'
+Plug 'tell-k/vim-autopep8'
 
 "" Colorschemes
 Plug 'tyrannicaltoucan/vim-quantum'
@@ -99,10 +104,13 @@ let g:lightline = {
     \             [ 'filename', 'gitbranch', 'readonly', 'modified' ] ]
     \ },
     \ 'component_function': {
-    \   'gitbranch': 'gitbranch#name'
+    \   'gitbranch': 'Branch'
     \ },
     \ 'colorscheme': 'quantum',
     \ }
+function! Branch()
+    return gitbranch#name() != '' ? ' ' . gitbranch#name() : ''
+endfunction
 
 " Better Comments
 highlight ErrorBetterComments guifg=#dd7186
@@ -118,6 +126,7 @@ let g:markdown_enable_spell_checking = 0
 let g:prettier#config#tab_width = '4'
 let g:prettier#autoformat = 0
 let g:prettier#config#trailing_comma = 'all'
+let g:prettier#config#single_quote = 'yes'
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " Java completion
@@ -128,19 +137,22 @@ autocmd FileType java JCEnable
 autocmd BufEnter * EnableBlameLine
 let g:blameLineGitFormat = '%an, %ar - %s'
 
+" NERDTree Auto-refresh
+autocmd BufWritePost * NERDTreeRefreshRoot
+
 " NERDTree Git
 let g:NERDTreeGitStatusConcealBrackets = 1
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ 'Modified'  :'~ ',
-    \ 'Staged'    :'✓ ',
-    \ 'Untracked' :'+ ',
-    \ 'Renamed'   :'= ',
-    \ 'Unmerged'  :'※ ',
-    \ 'Deleted'   :'- ',
-    \ 'Dirty'     :'✗ ',
-    \ 'Ignored'   :'☒ ',
-    \ 'Clean'     :'* ',
-    \ 'Unknown'   :'? ',
+    \ 'Modified'  :'',
+    \ 'Staged'    :'',
+    \ 'Untracked' :'',
+    \ 'Renamed'   :'',
+    \ 'Unmerged'  :'',
+    \ 'Deleted'   :'',
+    \ 'Dirty'     :'',
+    \ 'Ignored'   :'',
+    \ 'Clean'     :'*',
+    \ 'Unknown'   :'?',
     \ }
 highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
@@ -166,3 +178,9 @@ for i in [1, 2]
     autocmd bufenter * if (winnr("$") <= 2 && (exists("b:NERDTree") || &buftype ==# 'terminal')) | q | endif
 endfor
 
+" .cutter -> .yml
+autocmd BufRead,BufNewFile *.cutter set filetype=yaml
+
+" Autopep8
+let g:autopep8_on_save = 1
+let g:autopep8_disable_show_diff = 1

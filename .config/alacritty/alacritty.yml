@@ -57,17 +57,17 @@ scrolling:
 
 font:
   normal:
-    family: "SF Mono"
+    family: "SF Mono Nerd Font"
     style: Regular
 
   bold:
-    family: "SF Mono"
+    family: "SF Mono Nerd Font"
 
   italic:
-    family: "SF Mono"
+    family: "SF Mono Nerd Font"
 
   bold_italic:
-    family: "SF Mono"
+    family: "SF Mono Nerd Font"
 
   size: 11.0
 
