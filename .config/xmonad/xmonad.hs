@@ -51,6 +51,7 @@ main = do
             spawnOnce "setxkbmap us,il -option grp:sclk_toggle &"           -- Layout switcher
             spawnOnce "xset s off -dpms &"                                  -- Disable screensaver
             spawnOnce "udiskie -Nt &"                                       -- Automount disks
+            -- spawnOnce "light-locker --lock-on-lid --lock-on-suspend &"   -- Lock on lid close
             setWMName "LG3D"                                                -- Java compatibility iirc
 
     -- Layouts
