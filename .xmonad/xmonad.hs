@@ -44,13 +44,13 @@ main = do
 
     -- Autostart
         , startupHook = do
-            spawnOnce "xsetroot -cursor_name left_ptr &"                    -- Replace X cursor
-            spawnOnce "feh --randomize --bg-fill /usr/share/wallpapers/* &" -- Set random wallpaper
             spawnOnce "picom &"                                             -- Compositing
-            spawnOnce "udiskie -Nt &"                                       -- Automount disks
             spawnOnce "polybar bar1 &"                                      -- Polybar
-            spawnOnce "setxkbmap us,il -option grp:caps_toggle &"           -- Layout switcher
+            spawnOnce "feh --randomize --bg-fill /usr/share/wallpapers/* &" -- Set random wallpaper
+            spawnOnce "xsetroot -cursor_name left_ptr &"                    -- Replace X cursor
+            spawnOnce "setxkbmap us,il -option grp:sclk_toggle &"           -- Layout switcher
             spawnOnce "xset s off -dpms &"                                  -- Disable screensaver
+            spawnOnce "udiskie -Nt &"                                       -- Automount disks
             setWMName "LG3D"                                                -- Java compatibility iirc
 
     -- Layouts
@@ -63,19 +63,9 @@ main = do
               ) ||| (( renamed [Replace "Monocle"]                          -- Fullscreen
                          $ spacingRaw False (Border 4 4 4 4) True (Border 4 4 4 4) True
                          $ limitWindows 20 Full
-              ) ||| (( renamed [Replace "Grid"]                             -- Grid
-                         $ limitWindows 12
-                         $ spacingRaw False (Border 4 4 4 4) True (Border 4 4 4 4) True
-                         $ mkToggle (single MIRROR)
-                         $ Grid (16/10)
-              ) ||| (( renamed [Replace "Vertical M&S"]                     -- Master & Stacked with Master on top
-                         $ limitWindows 12
-                         $ spacingRaw False (Border 4 4 4 4) True (Border 4 4 4 4) True
-                         $ Mirror
-                         $ ResizableTall 1 (3/100) (1/2) []
               ) ||| (( renamed [Replace "Floating"]                         -- Floating mode
                          $ limitWindows 20 simplestFloat
-              ))))))
+              ))))
 
     -- Workspaces
         , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] 
@@ -95,7 +85,6 @@ main = do
                         D.signalBody = [D.toVariant $ UTF8.decodeString str]
                     })
             , ppCurrent = wrap ("%{F" ++ "#fafafa" ++ "} ") " %{F-}"        -- Current workspace number colour
-            , ppVisible = wrap ("%{F" ++ "#fafafa" ++ "} ") " %{F-}"        -- Workspaces in other screens
             , ppHidden = wrap ("%{F" ++ "#545454" ++ "} ") " %{F-}"         -- Hidden workspaces with open programs
             , ppSep = " | "                                                 -- Module separator
             , ppWsSep = ""                                                  -- Workspace number separator
@@ -103,7 +92,7 @@ main = do
 
     -- Keybinds
         } `additionalKeysP` 
-            [ ("M-S-r", spawn "xmonad --restart")                           -- Restarts xmonad
+            [ ("M-S-s", spawn "shutdown now")                               -- Shuts the PC down
             , ("M-S-q", io exitSuccess)                                     -- Quits xmonad
             , ("M-<Return>", spawn "alacritty")                             -- Open Alacritty
             , ("M-S-c", kill1)                                              -- Kill the currently focused client
