@@ -14,6 +14,7 @@ Plug 'jbgutierrez/vim-better-comments'
 Plug 'tpope/vim-commentary'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 Plug 'ryanoasis/vim-devicons'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
 "" Git
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -23,7 +24,6 @@ Plug 'itchyny/vim-gitbranch'
 
 "" Languages
 Plug 'gabrielelana/vim-markdown' 
-Plug 'starcraftman/vim-eclim'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'deoplete-plugins/deoplete-jedi'
@@ -70,6 +70,9 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" DoGe comment
+nnoremap dg :DogeGenerate<CR>
 
 " Colorscheme
 let g:quantum_black=1
@@ -159,19 +162,22 @@ highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 " Open NERDTree and terminal on start
-map tt :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-tnoremap <Esc> <C-\><C-n>
-autocmd TabNew,VimEnter *
-    \ NERDTree |
-    \ execute "wincmd l" |
-    \ split |
-    \ execute "wincmd j" |
-    \ execute "term" |
-    \ execute "resize 10" |
-    \ execute "set nonumber" |
-    \ execute "wincmd k" |
-    \ execute "set signcolumn=yes"
+
+if $nosplit != 1
+    map tt :NERDTreeToggle<CR>
+    let NERDTreeShowHidden=1
+    tnoremap <Esc> <C-\><C-n>
+    autocmd TabNew,VimEnter *
+        \ NERDTree |
+        \ execute "wincmd l" |
+        \ split |
+        \ execute "wincmd j" |
+        \ execute "term" |
+        \ execute "resize 10" |
+        \ execute "set nonumber" |
+        \ execute "wincmd k" |
+        \ execute "set signcolumn=yes"
+endif
 
 " Autoclose if only NERDTree and terminal remain
 for i in [1, 2]
