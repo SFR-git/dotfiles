@@ -33,9 +33,3 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias vim='nvim'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME/'
-
-# hub git wrapper
-eval "$(hub alias -s)"
-
-# Rick roll roulette
-[ $[$RANDOM % 420] = 0 ] && ./.rickrollrc.sh
