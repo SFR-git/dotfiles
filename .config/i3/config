@@ -6,8 +6,10 @@ gaps outer 8
 
 # Borders
 for_window [class=".*"] border pixel 2
-client.focused #fafafa #fafafa #fafafa
-client.unfocused #1a1a1a #1a1a1a #1a1a1a
+client.focused #fafafa #fafafa #fafafa #fafafa
+client.unfocused #1a1a1a #1a1a1a #1a1a1a #1a1a1a
+smart_borders on
+smart_gaps on
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
