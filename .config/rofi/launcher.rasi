@@ -28,12 +28,12 @@ window {
     background-color:               @background;
     text-color:                     @foreground;
     border-radius:                  0px;
-    height:                         24px;
-    width:                          98.823%;
+    height:                         32px;
+    width:                          100%;
     location:                       north;
     anchor:                         north;
     x-offset:                       0;
-    y-offset:                       8;
+    y-offset:                       0;
 	children: 						[ horibox ];
 }
 
@@ -43,7 +43,7 @@ horibox {
 	orientation: 					horizontal;
 	children: 						[ textbox-prompt-colon, prompt, entry, listview ];
     margin:                         0px 0px 0px 0px;
-    padding:                        0px 4px 0px 4px;
+    padding:                        4px 4px 0px 4px;
 }
 
 prompt {
