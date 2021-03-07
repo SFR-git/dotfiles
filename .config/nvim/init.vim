@@ -2,10 +2,10 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'yggdroot/indentline'
-Plug 'preservim/nerdtree'
 Plug 'vim-syntastic/syntastic'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -17,10 +17,10 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
 "" Git
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tveskag/nvim-blame-line'
 Plug 'itchyny/vim-gitbranch'
+Plug 'tpope/vim-fugitive'
 
 "" Languages
 Plug 'gabrielelana/vim-markdown' 
@@ -140,53 +140,14 @@ autocmd FileType java JCEnable
 autocmd BufEnter * EnableBlameLine
 let g:blameLineGitFormat = '%an, %ar - %s'
 
-" NERDTree Auto-refresh
-autocmd BufWritePost * NERDTreeRefreshRoot
-
-" NERDTree Git
-let g:NERDTreeGitStatusConcealBrackets = 1
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ 'Modified'  :'',
-    \ 'Staged'    :'',
-    \ 'Untracked' :'',
-    \ 'Renamed'   :'',
-    \ 'Unmerged'  :'',
-    \ 'Deleted'   :'',
-    \ 'Dirty'     :'',
-    \ 'Ignored'   :'',
-    \ 'Clean'     :'*',
-    \ 'Unknown'   :'?',
-    \ }
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-
-" Open NERDTree and terminal on start
-
-if $nosplit != 1
-    map tt :NERDTreeToggle<CR>
-    let NERDTreeShowHidden=1
-    tnoremap <Esc> <C-\><C-n>
-    autocmd TabNew,VimEnter *
-        \ NERDTree |
-        \ execute "wincmd l" |
-        \ split |
-        \ execute "wincmd j" |
-        \ execute "term" |
-        \ execute "resize 10" |
-        \ execute "set nonumber" |
-        \ execute "wincmd k" |
-        \ execute "set signcolumn=yes"
-endif
-
-" Autoclose if only NERDTree and terminal remain
-for i in [1, 2]
-    autocmd bufenter * if (winnr("$") <= 2 && (exists("b:NERDTree") || &buftype ==# 'terminal')) | q | endif
-endfor
-
 " .cutter -> .yml
 autocmd BufRead,BufNewFile *.cutter set filetype=yaml
 
 " Autopep8
 let g:autopep8_on_save = 1
 let g:autopep8_disable_show_diff = 1
+
+" CtrlP
+let g:ctrlp_regexp = 1
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_working_path_mode = 'ra'
