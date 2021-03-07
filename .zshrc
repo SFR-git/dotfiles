@@ -6,7 +6,7 @@ HYPHEN_INSENSITIVE="true"
 plugins=(zsh-autosuggestions colored-man-pages command-not-found cp compleat extract)
 
 # Exports
-export LANG=en_GB.UTF-8
+export LANG=en_US.UTF-8
 export HISTCONTROL=ignoreboth
 export EDITOR=nvim
 export VISUAL=nvim
