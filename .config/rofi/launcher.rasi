@@ -1,5 +1,5 @@
 configuration {
-    font:                           "SF Mono Semibold 10";
+    font:                           "Sauce Code Pro Nerd Font Semibold 10.5";
     show-icons:                     false;
 	icon-theme: 					"Hybrid";
     display-drun: 					"Search";

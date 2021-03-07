@@ -50,17 +50,17 @@ scrolling:
 
 font:
   normal:
-    family: "SF Mono Nerd Font"
+    family: "Sauce Code Pro Nerd Font"
     style: Regular
 
   bold:
-    family: "SF Mono Nerd Font"
+    family: "Sauce Code Pro Nerd Font"
 
   italic:
-    family: "SF Mono Nerd Font"
+    family: "Sauce Code Pro Nerd Font"
 
   bold_italic:
-    family: "SF Mono Nerd Font"
+    family: "Sauce Code Pro Nerd Font"
 
   size: 11.0
 
