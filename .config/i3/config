@@ -2,7 +2,6 @@ set $mod Mod4
 
 # Gaps
 gaps inner 8
-gaps outer 8
 
 # Borders
 for_window [class=".*"] border pixel 2
