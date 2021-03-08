@@ -43,7 +43,7 @@ horibox {
 	orientation: 					horizontal;
 	children: 						[ textbox-prompt-colon, prompt, entry, listview ];
     margin:                         0px 0px 0px 0px;
-    padding:                        4px 4px 0px 4px;
+    padding:                        0px 4px 0px 4px;
 }
 
 prompt {
@@ -63,7 +63,7 @@ inputbar {
     border-radius:                  0px;
     border-color:                  	@border;
     margin:                         0px 0px 0px 0px;
-    padding:                        0px 0px 0px 0px;
+    padding:                        4px 4px 4px 4px;
     position:                       center;
 }
 
@@ -76,7 +76,7 @@ entry {
     horizontal-align:               0;
     placeholder:                    "Search";
     blink:                          true;
-    padding:                        5px 5px 5px 5px;
+    padding:                        8px 5px 5px 12px;
 }
 
 case-indicator {
@@ -88,7 +88,7 @@ case-indicator {
 listview {
     background-color:               @background;
     columns:                        1;
-    lines:							15;
+    lines:                          15;
     spacing:                        0px;
     cycle:                          false;
     dynamic:                        true;
@@ -103,15 +103,15 @@ mainbox {
 }
 
 element {
-    background-color:               @background-ib;
+    background-color:               @background;
     text-color:                     @foreground;
     orientation:                    horizontal;
     border-radius:                  0px;
-    padding:                        3px 8px 3px 8px;
+    padding:                        6px 8px 7px 8px;
 }
 
 element-icon {
-    size:                           24px;
+    size:                           32px;
     border:                         0px;
 }
 
