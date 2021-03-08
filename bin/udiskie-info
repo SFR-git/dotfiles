@@ -1,0 +1,7 @@
+#!/usr/bin/python
+# encoding: utf-8
+import sys
+from udiskie.cli import Info
+
+if __name__ == '__main__':
+    sys.exit(Info.main())
