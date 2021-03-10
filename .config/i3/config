@@ -1,20 +1,14 @@
 set $mod Mod4
 
-# Gaps
+# gaps
 gaps inner 8
 
-# Borders
+# borders
 for_window [class=".*"] border pixel 2
 client.focused #fafafa #fafafa #fafafa #fafafa
 client.unfocused #1a1a1a #1a1a1a #1a1a1a #1a1a1a
 smart_borders on
 smart_gaps on
-
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -33,7 +27,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+c kill
 
 # start rofi
-bindsym $mod+p exec --no-startup-id rofi -no-lazy-grab -show drun -theme launcher.rasi
+bindsym $mod+d exec rofi -no-lazy-grab -show drun -theme launcher.rasi
 
 
 # screenshot
@@ -118,9 +112,11 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Autostart
+# autostart
 exec picom &
-exec feh --randomize --bg-fill /usr/share/wallpapers/*
-exec polybar bar1 &
-exec setxkbmap us,il -option grp:sclk_toggle &
+exec --no-startup-id feh --randomize --bg-fill /usr/share/wallpapers/*
+exec --no-startup-id polybar bar1 &
+exec --no-startup-id setxkbmap us,il -option grp:sclk_toggle &
+exec xset s off -dpms &
 exec udiskie -Nt &
+exec --no-startup-id nm-applet

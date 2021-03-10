@@ -1,7 +1,0 @@
-#!/usr/bin/python
-# encoding: utf-8
-import sys
-from udiskie.cli import Daemon
-
-if __name__ == '__main__':
-    sys.exit(Daemon.main())
