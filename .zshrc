@@ -13,6 +13,7 @@ export VISUAL=nvim
 export ZSH="$HOME/.config/oh-my-zsh"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#545454"
+export XDG_RUNTIME_DIR="/tmp/runtime"
 
 source $ZSH/oh-my-zsh.sh
 
