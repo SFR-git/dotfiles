@@ -113,7 +113,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # autostart
-exec picom &
+exec picom -b
 exec --no-startup-id feh --randomize --bg-fill /usr/share/wallpapers/*
 exec --no-startup-id polybar bar1 &
 exec --no-startup-id setxkbmap us,il -option grp:sclk_toggle &
