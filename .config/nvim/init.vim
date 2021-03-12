@@ -7,29 +7,27 @@ Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'yggdroot/indentline'
 Plug 'vim-syntastic/syntastic'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'jbgutierrez/vim-better-comments'
 Plug 'tpope/vim-commentary'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-
-"" Git
+" Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tveskag/nvim-blame-line'
 Plug 'itchyny/vim-gitbranch'
 Plug 'tpope/vim-fugitive'
-
-"" Languages
+" Languages
 Plug 'gabrielelana/vim-markdown' 
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'hdima/python-syntax'
 Plug 'tell-k/vim-autopep8'
-
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'zchee/deoplete-clang'
 "" Colorschemes
 Plug 'tyrannicaltoucan/vim-quantum'
 
