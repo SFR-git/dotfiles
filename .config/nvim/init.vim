@@ -1,3 +1,9 @@
+" Check if vim-plug is installed
+if !filereadable(".local/share/nvim/site/autoload/plug.vim")
+    echo "vim-plug not installed, installing..."
+    call system('curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+endif
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 
